@@ -21,7 +21,7 @@ class WaterMeterAdmin(admin.ModelAdmin):
         'value',
         'date',
         'apartment',
-        'tariff',
+        # 'tariff',
     )
     search_fields = ('apartment',)
     list_filter = ('apartment',)

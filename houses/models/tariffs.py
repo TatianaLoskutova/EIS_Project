@@ -11,13 +11,12 @@ class WaterMeter(models.Model):
         help_text='Введите показания до запятой'
     )
     date = models.DateField(default=timezone.now, verbose_name='Дата показаний')
-    tariff = models.ForeignKey('houses.Tariff', models.CASCADE, verbose_name='Тариф')
     apartment = models.ForeignKey(
-        'houses.Apartment', models.CASCADE, 'watermeter', verbose_name='Квартира',
+        'houses.Apartment', models.CASCADE, verbose_name='Квартира',
     )
 
     class Meta:
-        ordering = ('tariff',)
+        ordering = ('apartment',)
         default_related_name = 'water_meter'
         verbose_name = 'Счетчик воды'
         verbose_name_plural = 'Счетчики воды'
@@ -37,6 +36,7 @@ class Tariff(models.Model):
 
     class Meta:
         ordering = ('name',)
+        # default_related_name = 'tariffs'
         verbose_name = 'Тариф'
         verbose_name_plural = 'Тарифы'
 
