@@ -33,7 +33,7 @@ INSTALLED_APPS += [
 
 # apps
 INSTALLED_APPS += [
-    # 'api',
+    'api',
     'houses',
 ]
 

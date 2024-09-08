@@ -36,3 +36,12 @@ class ApartmentAdmin(admin.ModelAdmin):
         'house',
     )
     empty_value_display = '-пусто-'
+
+
+@admin.register(residences.House)
+class HouseAdmin(admin.ModelAdmin):
+    list_display = (
+        'address',
+    )
+    search_fields = ('address', )
+    empty_value_display = '-пусто-'
