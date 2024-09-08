@@ -31,6 +31,12 @@ INSTALLED_APPS += [
     'django_extensions',
 ]
 
+# apps
+INSTALLED_APPS += [
+    # 'api',
+    'houses',
+]
+
 # after apps
 INSTALLED_APPS += [
     'drf_spectacular',
