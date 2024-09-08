@@ -1,7 +1,6 @@
-from datetime import date
-
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.utils import timezone
 
 
 class WaterMeter(models.Model):
@@ -11,7 +10,7 @@ class WaterMeter(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(99999)],
         help_text='Введите показания до запятой'
     )
-    date = models.DateField(default=date.today(), verbose_name='Дата показаний')
+    date = models.DateField(default=timezone.now, verbose_name='Дата показаний')
     tariff = models.ForeignKey('houses.Tariff', models.CASCADE, verbose_name='Тариф')
     apartment = models.ForeignKey(
         'houses.Apartment', models.CASCADE, 'watermeter', verbose_name='Квартира',
