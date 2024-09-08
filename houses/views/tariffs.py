@@ -7,11 +7,14 @@ from ..models.tariffs import WaterMeter
 
 
 @extend_schema_view(
-    get=extend_schema(
-        summary='Получить показания счетчика воды', tags=['Счетчики воды']
+    list=extend_schema(
+        summary='Получить показания счетчиков воды', tags=['Счетчики воды']
     ),
-    post=extend_schema(
+    create=extend_schema(
         summary='Внести показания счетчика вода', tags=['Счетчики воды']
+    ),
+    retrieve=extend_schema(
+        summary='Получить показания счетчика воды по id', tags=['Счетчики воды']
     ),
 )
 class WaterMeterViewSet(ReadOrCreateViewSet):

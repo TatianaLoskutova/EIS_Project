@@ -2,16 +2,19 @@ from drf_spectacular.utils import extend_schema, extend_schema_view
 from rest_framework.permissions import AllowAny
 
 from houses.models.residences import Apartment, House
-from houses.serializers.api import residences as residences_s
+from houses.serializers.api.residences import ApartmentSerializer, HouseSerializer
 from .mixins import ReadOrCreateViewSet
 
 
 @extend_schema_view(
-    get=extend_schema(
+    list=extend_schema(
         summary='Получить список домов', tags=['Дома']
     ),
-    post=extend_schema(
+    create=extend_schema(
         summary='Внести дом', tags=['Дома']
+    ),
+    retrieve=extend_schema(
+        summary='Получить дом по id', tags=['Дома']
     ),
 )
 class HouseViewSet(ReadOrCreateViewSet):
@@ -19,15 +22,18 @@ class HouseViewSet(ReadOrCreateViewSet):
 
     queryset = House.objects.all()
     permission_classes = (AllowAny, )
-    serializer_class = residences_s.HouseSerializer
+    serializer_class = HouseSerializer
 
 
 @extend_schema_view(
-    get=extend_schema(
+    list=extend_schema(
         summary='Получить список квартир', tags=['Квартиры']
     ),
-    post=extend_schema(
+    create=extend_schema(
         summary='Внести квартиру', tags=['Квартиры']
+    ),
+    retrieve=extend_schema(
+        summary='Получить квартиру по id', tags=['Квартиры']
     ),
 )
 class ApartmentViewSet(ReadOrCreateViewSet):
@@ -35,4 +41,4 @@ class ApartmentViewSet(ReadOrCreateViewSet):
 
     queryset = Apartment.objects.all()
     permission_classes = (AllowAny, )
-    serializer_class = residences_s.ApartmentSerializer
+    serializer_class = ApartmentSerializer

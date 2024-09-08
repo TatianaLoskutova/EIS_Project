@@ -25,7 +25,7 @@ class Apartment(models.Model):
         max_digits=3, decimal_places=1, verbose_name='Площадь квартиры',
     )
     house = models.ForeignKey('houses.House', models.CASCADE)
-    tariff = models.ForeignKey('houses.Tariff', models.CASCADE, verbose_name='Тариф', default=0)
+    tariff = models.ForeignKey('houses.Tariff', models.CASCADE, verbose_name='Тариф', default=11)
 
     class Meta:
         ordering = ('number',)
